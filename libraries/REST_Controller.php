@@ -1,8 +1,7 @@
 <?php
+namespace Restserver\Libraries;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-namespace Restserver\Libraries
 
 /**
  * CodeIgniter Rest Controller

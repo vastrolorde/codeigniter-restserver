@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
 namespace Restserver\Libraries;
+
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Format class
