@@ -1,0 +1,29 @@
+{
+    "name": "hanischit/codeigniter-restserver",
+    "type": "library",
+    "description": "A fully RESTful server implementation for CodeIgniter using one library, one config file and one controller.",
+    "authors": [
+	    {
+            "name": "Fabian Hanisch",
+			"mail": "kontakt@hanisch-it.de"
+        },		
+        {
+            "name": "Phil Sturgeon"
+        },
+        {
+            "name": "Chris Kacerguis"
+        }        
+    ],
+    "require": {
+        "php": ">=5.4.0",
+		"codeigniter/framework": ">=3.0"
+    },
+    
+     "autoload": {
+        "classmap": [
+            "libraries/Format.php",
+            "libraries/REST_Controller.php"
+        ]
+    },
+    "license": "MIT"
+}
