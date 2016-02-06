@@ -1,6 +1,8 @@
 <?php
 namespace Restserver\Libraries;
 
+use Restserver\Libraries\Format;
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
@@ -15,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  * @version         3.0.0
  */
-abstract class REST_Controller extends CI_Controller {
+abstract class REST_Controller extends \CI_Controller {
 
     // Note: Only the widely used HTTP status codes are documented
 
@@ -331,6 +333,11 @@ abstract class REST_Controller extends CI_Controller {
     protected $_enable_xss = FALSE;
 
     /**
+     * @var Format
+     */
+    protected $format;
+
+    /**
      * HTTP status codes and their respective description
      * Note: Only the widely used HTTP status codes are used
      *
@@ -369,7 +376,7 @@ abstract class REST_Controller extends CI_Controller {
      * @access public
      * @param string $config Configuration filename minus the file extension
      * e.g: my_rest.php is passed as 'my_rest'
-     * @return void
+     * @throws Exception
      */
     public function __construct($config = 'rest')
     {
@@ -402,10 +409,10 @@ abstract class REST_Controller extends CI_Controller {
         $this->_start_rtime = microtime(TRUE);
 
         // Load the rest.php configuration file
-        $this->load->config($config);
+        $this->get_local_config($config);
 
         // At present the library is bundled with REST_Controller 2.5+, but will eventually be part of CodeIgniter (no citation)
-        $this->load->library('format');
+        $this->format = new Format();
 
         // Determine supported output formats from configuration
         $supported_formats = $this->config->item('rest_supported_formats');
@@ -439,12 +446,12 @@ abstract class REST_Controller extends CI_Controller {
         }
 
         // Load the language file
-        $this->lang->load('rest_controller', $language);
+        $this->lang->load('rest_controller', $language, FALSE, TRUE, __DIR__."/../");
 
         // Initialise the response, request and rest objects
-        $this->request = new stdClass();
-        $this->response = new stdClass();
-        $this->rest = new stdClass();
+        $this->request = new \stdClass();
+        $this->response = new \stdClass();
+        $this->rest = new \stdClass();
 
         // Check to see if the current IP address is blacklisted
         if ($this->config->item('rest_ip_blacklist_enabled') === TRUE)
@@ -561,6 +568,25 @@ abstract class REST_Controller extends CI_Controller {
                 $this->_check_whitelist_auth();
             }
         }
+    }
+
+    /**
+     * @param $config_file
+     */
+    private function get_local_config($config_file)
+    {
+        if(file_exists(__DIR__."/../config/".$config_file.".php"))
+        {
+            $config = array();
+            include(__DIR__ . "/../config/" . $config_file . ".php");
+
+            foreach($config AS $key => $value)
+            {
+               $this->config->set_item($key, $value);
+            }
+        }
+
+        $this->load->config($config_file, FALSE, TRUE);
     }
 
     /**
