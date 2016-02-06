@@ -1,6 +1,7 @@
 <?php
 namespace Restserver\Libraries;
 
+use Exception;
 use Restserver\Libraries\Format;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
