@@ -14,7 +14,7 @@ Original from: (https://github.com/chriskacerguis/codeigniter-restserver). Now c
 Rest Server is available via [Composer/Packagist](https://packagist.org/packages/hanischit/codeigniter-restserver) (using semantic versioning), so just add this line to your `composer.json` file:
 
 ```json
-"hanischit/codeigniter-restserver": "dev-master"
+"hanischit/codeigniter-restserver": "1.0.0"
 ```
 
 or
