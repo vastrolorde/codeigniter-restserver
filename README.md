@@ -726,10 +726,8 @@ $lang['text_rest_unsupported'] = 'Unsupported protocol';
 
 ## Contributions
 
-This project was originally written by Phil Sturgeon and Chris Kacerguis, however his involvement has shifted
-as he is no longer using it. 
+This project was originally written by Phil Sturgeon and Chris Kacerguis.
 
-Pull Requests are the best way to fix bugs or add features. I know loads of you use this, so please
-contribute if you have improvements to be made and I'll keep releasing versions over time.
+See: https://github.com/chriskacerguis/codeigniter-restserver
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/chriskacerguis/codeigniter-restserver/master/LICENSE)
