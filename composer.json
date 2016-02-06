@@ -3,8 +3,7 @@
     "type": "library",
     "description": "A fully RESTful server implementation for CodeIgniter using one library, one config file and one controller.",
 	"keywords": ["codeigniter","restserver"],
-	"version": "1.0.0",
-    "homepage": "hhttps://github.com/Hanisch-IT/codeigniter-restserver",
+    "homepage": "https://github.com/Hanisch-IT/codeigniter-restserver",
     "authors": [
 	    {
             "name": "Fabian Hanisch",
@@ -14,7 +13,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-		"codeigniter/framework": ">=3.0"
+		"codeigniter/framework": "^3.0.4"
     },
     
      "autoload": {
